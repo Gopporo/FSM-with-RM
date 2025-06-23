@@ -1,0 +1,12 @@
+package org.example.incidentfsm_v2.models;
+
+public enum IncidentEvent {
+    ADD_INCIDENT,
+    INCIDENT_CRITICAL_OR_EMERGENCY,
+    ESCALATE_NEEDED,
+    CLOSE_INCIDENT,
+    INCIDENT_MINOR_OR_NORMAL,
+    INCIDENT_MAJOR,
+    IMMEDIATELY_RESOLVE,
+    SKIP_INCIDENT
+}

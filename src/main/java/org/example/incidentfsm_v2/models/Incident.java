@@ -22,6 +22,21 @@ public class Incident {
     @ManyToOne
     private User reportedBy;
 
-    private boolean critical;
+    @Enumerated(EnumType.STRING)
+    private IncidentType incidentType;
+
+    @Transient
+    private IncidentFSM fsm;
+
+    public IncidentFSM getFsm() {
+        if (fsm == null) {
+            fsm = new IncidentFSM(currentState);
+        }
+        return fsm;
+    }
+
+    public void applyEvent(IncidentEvent event) {
+        this.currentState = getFsm().apply(event);
+    }
 }
 
